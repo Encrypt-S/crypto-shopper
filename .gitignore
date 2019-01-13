@@ -1,0 +1,6 @@
+front-angular/node_modules
+back-express/node_modules
+api-express/node_modules
+
+back-express/config/auth.json
+back-express/config/default.json

@@ -1,0 +1,16 @@
+<div class="overview">
+  <div class="row">
+      <div class="col m6 s12">
+        <mz-card
+        class="grey lighten-5"
+        [horizontal]="true">
+        <mz-card-title>
+          My Account
+        </mz-card-title>
+        <mz-card-content>
+          <p>Name: <span *ngIf=account>{{account.name}}</span></p>
+        </mz-card-content>
+      </mz-card>
+      </div>
+    </div>
+</div>

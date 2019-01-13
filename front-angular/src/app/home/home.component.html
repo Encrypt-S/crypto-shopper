@@ -1,0 +1,29 @@
+<div class="overview">
+  <div class="row">
+      <div class="col m6 s12">
+        <mz-card
+        class="grey lighten-5"
+        [horizontal]="true">
+        <mz-card-title>
+          Current Price
+        </mz-card-title>
+        <mz-card-content>
+          <p>NAV / USD: <span *ngIf=explorer>{{explorer.tickerUSD | currency}}</span></p>
+          <p>NAV / BTC: <span *ngIf=explorer>{{explorer.tickerBTC | number:'1.8-8'}}</span></p>
+        </mz-card-content>
+      </mz-card>
+      </div>
+      <div class="col m6 s12 center">
+        <mz-card
+        class="grey lighten-5"
+        [horizontal]="true">
+        <mz-card-title>
+          Donate
+        </mz-card-title>
+        <mz-card-content>
+          <qr-code [value]="qrMainAddress" [size]="300" class="qr-code"></qr-code>
+        </mz-card-content>
+      </mz-card>
+      </div>
+    </div>
+</div>
