@@ -14,6 +14,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 //pages
 import { AccountComponent } from './account/account.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent }      from './not-found/not-found.component';
 
@@ -44,6 +45,7 @@ export function tokenGetter() {
     NavbarComponent,
     HomeComponent,
     LoginComponent,
+    LogoutComponent,
     PageNotFoundComponent,
   ],
   imports: [

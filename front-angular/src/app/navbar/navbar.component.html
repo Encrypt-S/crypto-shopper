@@ -3,7 +3,7 @@
   <mz-navbar-item-container  *ngIf="authed" [align]="'right'">
     <mz-navbar-item><a href="/">Home</a></mz-navbar-item>
     <mz-navbar-item><a href="/account">Account</a></mz-navbar-item>
-    <mz-navbar-item><a href="/" (click)="logOut()">Logout</a></mz-navbar-item>
+    <mz-navbar-item><a (click)="logOut()">Logout</a></mz-navbar-item>
   </mz-navbar-item-container>
   <mz-navbar-item-container  *ngIf="!authed" [align]="'right'">
     <mz-navbar-item><a href="/account">Home</a></mz-navbar-item>

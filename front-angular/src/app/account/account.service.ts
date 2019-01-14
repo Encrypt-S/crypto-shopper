@@ -18,6 +18,6 @@ export class AccountService {
       })
     };
 
-    return this.http.post(this.apiEndpoint, {id: 1}, httpOptions);
+    return this.http.post(this.apiEndpoint, {id: accountId}, httpOptions);
   }
 }

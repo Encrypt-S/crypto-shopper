@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var lodash = require('lodash');
 
-var authController = require('./auth.controller');
-var accountController = require('./account.controller');
+var authController = require('../controllers/auth.controller');
+var accountController = require('../controllers/account.controller');
 
 /* JWT Middleware */
 router.use(function(req, res, next) {
@@ -12,6 +12,7 @@ router.use(function(req, res, next) {
     return
   }
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
   authController.validateToken({token}, function(validToken, response){
     if (validToken) {
       next()

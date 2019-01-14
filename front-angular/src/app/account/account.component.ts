@@ -21,9 +21,9 @@ export class AccountComponent implements OnInit {
   }
 
   showAccountInfo() {
-    this.accountService.getAccountInfo()
+    this.accountService.getAccountInfo(1)
       .subscribe(
-        (data: number) => {
+        (data: any) => {
           this.account = {
             ...data.data
           };
