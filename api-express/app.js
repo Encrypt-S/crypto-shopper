@@ -14,8 +14,6 @@ var apiRouter = require('./routes/api');
 
 var app = express();
 
-if (process.env.NODE_ENV == 'development') process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
-
 const ssl = {
   key: fs.readFileSync('keys/' + config.ssl.key),
   cert: fs.readFileSync('keys/' + config.ssl.cert),
