@@ -2,8 +2,8 @@
 
 ### Dependencies
 
-node -v 9.7.0
-npm -v 6.5.0
+- node -v 9.7.0
+- npm -v 6.5.0
 
 ### Localhost Development Setup
 
