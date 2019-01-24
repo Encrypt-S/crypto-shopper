@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ExplorerModel } from './explorer.model';
+import { environment } from '../../environments/environment'
 
 @Injectable()
 export class ExplorerService {
   constructor(private http: HttpClient) { }
 
-  tickerUSD = 'https://chainz.cryptoid.info/nav/api.dws?q=ticker.usd';
-  tickerBTC = 'https://chainz.cryptoid.info/nav/api.dws?q=ticker.btc';
+  marketRatesApi = environment.api + '/explorer/market-rates';
 
-  getUSD() {
-    return this.http.get(this.tickerUSD);
-  }
-  getBTC() {
-    return this.http.get(this.tickerBTC);
+  getRates(market) {
+
+    return this.http.post(this.marketRatesApi, {market: market})
   }
 }

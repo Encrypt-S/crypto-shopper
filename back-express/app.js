@@ -5,10 +5,46 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var jwt = require('jsonwebtoken');
 var fs = require('fs');
+const http = require('http');
+const https = require('https');
+const pem = require('pem');
+const config = require('config');
 
 var apiRouter = require('./routes/api');
 
 var app = express();
+
+// generate ssl cert (and drag into keychain)
+// https://stackoverflow.com/questions/42518513/https-server-with-self-signed-certificate
+// https://tosbourn.com/getting-os-x-to-trust-self-signed-ssl-certificates/
+
+const ssl = {
+  key: fs.readFileSync('keys/' + config.ssl.key),
+  cert: fs.readFileSync('keys/' + config.ssl.cert),
+  requestCert: false,
+  rejectUnauthorized: false
+}
+
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(ssl, app);
+
+httpsServer.listen(config.ssl.port, (err) => {
+	console.log('HTTPS Server running on port ' + config.ssl.port, err);
+});
+
+
+app.use (function (req, res, next) {
+    if (req.protocol === 'https') {
+        console.log(req.protocol, req.secure);
+        next();
+    } else {
+        console.log('redirected');
+        var port = (config.ssl.port == 443) ? '' : ':' + config.ssl.port;
+        var hostname = req.headers.host.split(':')[0]
+        var host = hostname + port
+        res.redirect('https://' + host + req.url);
+    }
+});
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

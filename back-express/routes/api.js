@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var lodash = require('lodash');
+const config = require('config');
 
 var authController = require('../controllers/auth.controller');
 var accountController = require('../controllers/account.controller');
+var explorerController = require('../controllers/explorer.controller');
 
 /* JWT Middleware */
 router.use(function(req, res, next) {
-  if(req.originalUrl == '/api/auth/login' || req.originalUrl == '/api/auth/register'){
+  if(config.public_endpoints.includes(req.originalUrl)){
     next()
     return
   }
@@ -49,6 +51,14 @@ router.post('/auth/register', function(req, res) {
 router.post('/account', function(req, res, next) {
   var id = req.body.id
   accountController.getOverview({id}, function(accountAvailable, response){
+    res.send(JSON.stringify(response))
+    return
+  });
+});
+
+router.post('/explorer/market-rates', function(req, res, next) {
+  var market = req.body.market
+  explorerController.getMarketRate({market}, function(accountAvailable, response){
     res.send(JSON.stringify(response))
     return
   });

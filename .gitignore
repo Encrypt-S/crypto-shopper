@@ -4,3 +4,13 @@ api-express/node_modules
 
 back-express/config/auth.json
 back-express/config/default.json
+
+back-express/keys/server\.crt
+
+back-express/keys/\.DS_Store
+
+back-express/keys/
+
+back-express/\.DS_Store
+
+\.DS_Store

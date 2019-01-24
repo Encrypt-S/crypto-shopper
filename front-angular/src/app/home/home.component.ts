@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ExplorerModel } from '../explorer/explorer.model';
+import { RatesModel } from '../explorer/rates.model';
 import { ExplorerService } from '../explorer/explorer.service';
 
 
@@ -12,7 +12,7 @@ import { ExplorerService } from '../explorer/explorer.service';
 
 export class HomeComponent implements OnInit {
 
-  explorer: ExplorerModel;
+  rates: RatesModel;
   qrMainAddress: string;
 
   constructor(
@@ -20,38 +20,15 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.showUSD();
-    this.showBTC();
+    this.showNavRates();
     this.qrMainAddress = 'navcoin:NaSdzJ64o8DQo5DMPexVrL4PYFCBZqcmsW';
   }
 
-  showUSD() {
-    this.explorerService.getUSD()
-      .subscribe(
-        (data: number) => {
-          this.explorer = {
-            ...this.explorer,
-            tickerUSD: data
-          };
-        }, error => {
-          console.log('error: ', error);
-        }
-      );
+  showNavRates() {
+    this.explorerService.getRates('NAV')
+      .subscribe((rates: any) => this.rates = rates.data);
   }
 
-  showBTC() {
-    this.explorerService.getBTC()
-      .subscribe(
-        (data: number) => {
-          this.explorer = {
-            ...this.explorer,
-            tickerBTC: data
-          };
-        },
-        error => {
-          console.log('error: ', error);
-        }
-      );
-  }
 
-  }
+
+}

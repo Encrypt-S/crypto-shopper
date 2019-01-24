@@ -8,8 +8,9 @@
           Current Price
         </mz-card-title>
         <mz-card-content>
-          <p>NAV / USD: <span *ngIf=explorer>{{explorer.tickerUSD | currency}}</span></p>
-          <p>NAV / BTC: <span *ngIf=explorer>{{explorer.tickerBTC | number:'1.8-8'}}</span></p>
+          <p>NAV / USD: <span *ngIf=rates>{{rates['NAV-USD'] | currency}}</span></p>
+          <p>BTC / USD: <span *ngIf=rates>{{rates['BTC-USD'] | currency}}</span></p>
+          <p>NAV / BTC: <span *ngIf=rates>{{rates['BTC-NAV']| number:'1.8-8'}}</span></p>
         </mz-card-content>
       </mz-card>
       </div>
