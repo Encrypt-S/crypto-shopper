@@ -14,3 +14,7 @@ back-express/keys/
 back-express/\.DS_Store
 
 \.DS_Store
+
+back-express/config/development\.json
+
+back-express/config/production\.json
