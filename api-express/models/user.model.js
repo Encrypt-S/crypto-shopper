@@ -11,6 +11,7 @@ var UserSchema = new Schema({
     lastName: String,
     email: String,
     password: String,
+    created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },
 });
 

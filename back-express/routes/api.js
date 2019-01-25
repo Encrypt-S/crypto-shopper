@@ -32,34 +32,28 @@ router.get('/', function(req, res) {
 });
 
 router.post('/auth/login', function(req, res) {
-  var email = req.body.email
-  var password = req.body.password
-  authController.login({email, password}, function(authenticated, response){
+  authController.login(req.body function(authenticated, response){
     res.send(JSON.stringify(response))
     return
   });
 });
 
 router.post('/auth/register', function(req, res) {
-  var email = req.body.email
-  var password = req.body.password
-  authController.register({email, password}, function(authenticated, response){
+  authController.register(req.body, function(authenticated, response){
     res.send(JSON.stringify(response))
     return
   });
 });
 
 router.post('/account', function(req, res, next) {
-  var id = req.body.id
-  accountController.getOverview({id}, function(accountAvailable, response){
+  accountController.getOverview(req.body, function(accountAvailable, response){
     res.send(JSON.stringify(response))
     return
   });
 });
 
 router.post('/explorer/market-rates', function(req, res, next) {
-  var market = req.body.market
-  explorerController.getMarketRate({market}, function(accountAvailable, response){
+  explorerController.getMarketRate(req.body, function(accountAvailable, response){
     res.send(JSON.stringify(response))
     return
   });
